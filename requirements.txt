@@ -1,4 +1,4 @@
 pdfquery
 scraperwiki
 BeautifulSoup4
-cStringIO
+html5lib

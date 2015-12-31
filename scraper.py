@@ -7,7 +7,7 @@ import re
 
 base_url = "http://dpc.sa.gov.au"
 html = scraperwiki.scrape("http://www.dpc.sa.gov.au/lobbyist-who-register")
-soup = BeautifulSoup(html, "lxml")
+soup = BeautifulSoup(html, "html5lib")
 lobbys = []
 for tr in soup.tbody:
     lobby = {}
