@@ -1,0 +1,4 @@
+pdfquery
+scraperwiki
+BeautifulSoup4
+cStringIO
