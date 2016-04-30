@@ -58,10 +58,15 @@ for lobby in lobbys:
                                       'trading_name': trading_name,
                                       },
                                 table_name="lobbyist_firms")
-        owners = pdf.pq(':in_bbox("%s, %s, %s, %s")' % (0, float(
-            pdf.pq('LTTextBoxHorizontal:contains("etails of all employees undertaking lobbying activities")').attr(
-                'y0')) + 10, page_width, float(
-            pdf.pq('LTTextBoxHorizontal:contains("Australian Securities and Investments Commission")').attr('y1')) - 1))
+        try:
+            owners = pdf.pq(':in_bbox("%s, %s, %s, %s")' % (0, float(
+                pdf.pq('LTTextBoxHorizontal:contains("etails of all employees undertaking lobbying activities")').attr(
+                    'y0')) + 10, page_width, float(
+                pdf.pq('LTTextBoxHorizontal:contains("Australian Securities and Investments Commission")').attr('y1')) - 1))
+        except:
+            print "cannot find owners in this PDF, skipping :("
+            continue
+        
         for owner in owners:
             if owner.text and '.' in owner.text:
                 name = listpart.findall(owner.text)[0].strip()
